@@ -63,7 +63,9 @@ public class TicketMachine {
 	 * @throws IllegalArgumentException if amount is not positive
 	 */
 	public void insertMoney(int amount) {
+		if (amount > 0) {
 		balance = balance + amount;
+		}
 	}
 
 	/**
@@ -74,6 +76,7 @@ public class TicketMachine {
 	public int refund() {
 		balance -= price;
 		System.out.println("Je vous rends : " + balance + " centimes");
+		balance = 0;
 		return balance;
 	}
 

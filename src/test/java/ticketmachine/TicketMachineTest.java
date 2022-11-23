@@ -65,7 +65,7 @@ public class TicketMachineTest {
 	}
 
 	@Test
-        // S7 :rend correctement la monnaie
+        // S7 : rend correctement la monnaie
         public void rendCorrectementLaMonnaie() {
           machine.insertMoney(PRICE + 20);
           assertEquals(20,machine.refund());
@@ -73,10 +73,16 @@ public class TicketMachineTest {
         }
 
     @Test
-        // S8 :remet la balance à zéro
+        // S8 : remet la balance à zéro
         public void remetLaBalanceAZero() {
-          machine.insertMoney(PRICE);
+          machine.insertMoney(PRICE + 10);
           machine.refund();
           assertEquals(0,machine.getBalance());
+        }
+
+	@Test
+        // S9 : on ne peut pas insérer un montant négatif
+        public void montantNonNegatif() {
+			machine.insertMoney(-10);
         }
 }
